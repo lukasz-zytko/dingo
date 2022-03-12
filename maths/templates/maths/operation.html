@@ -1,0 +1,10 @@
+{% extends "maths/main.html" %}
+
+{% block title %} {{ title|capfirst }} :: Kalkulator Django {% endblock %}
+
+{% block content%}
+<h2>{{ title|capfirst }}</h2>
+<h3>
+    Wynik operacji <span style="color: blue; font-size: 40px;">{{ a }} {{ operacja }} {{ b }}</span> wynosi <span style="color: green; font-size: 56px;">{{ wynik }}</span>
+</h3>
+{% endblock %}

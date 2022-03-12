@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <title>Title</title>
+   <title>{% block title %} Kalkulator Django {% endblock %}</title>
 </head>
 <body>
-<h1>Wynik operacji <span style="color: blue; font-size: 40px;">{{ a }} {{ operacja }} {{ b }}</span> wynosi <span style="color: green; font-size: 56px;">{{ wynik }}</span></h1>
+   {% if messages %}
+      <ul class="messages">
+         {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+         {% endfor %}
+      </ul>
+   {% endif %}
+<h1>Kalkulator Django</h1>
+{% block content %}
+{% endblock %}
 </body>
 </html>
