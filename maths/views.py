@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib import messages
+from maths.models import Math
 
 def maths(request):
     return HttpResponse("Tu będzie matma")
@@ -48,3 +49,19 @@ def div(request, a, b):
         template_name="maths/operation.html",
         context=c
     )   
+
+def maths_list(request):
+    maths = Math.objects.all()
+    return render(
+        request=request,
+        template_name="maths/list.html",
+        context={"maths": maths}
+    )
+
+def math_details(request, id):
+    math = Math.objects.get(id=id)
+    return render(
+        request=request,
+        template_name="maths/details.html",
+        context={"math": math}
+    )
