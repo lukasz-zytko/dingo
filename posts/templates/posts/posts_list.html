@@ -1,0 +1,11 @@
+{% extends "posts/main.html" %}
+
+{% block title %}Posts list{% endblock %}
+
+{% block content %}
+   <ul>
+       {% for post in posts %}
+            <li><a href="{% url 'blog:post_details' post.id %}">{{ post.title }}</a> | {{ post.content|truncatechars:20 }} | <a href="{% url 'blog:author_details' post.author_id %}">{{ post.author }}</a></li>
+       {% endfor %}
+   </ul>
+{% endblock %}

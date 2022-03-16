@@ -29,4 +29,4 @@ class Author(models.Model):
     )
     email = models.EmailField()
     def __str__(self):
-        return f"Nick: {self.nick} | email: {self.email} | Bio: {self.bio} "
+        return f"{self.nick}"
