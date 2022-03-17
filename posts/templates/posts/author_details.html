@@ -3,11 +3,13 @@
 {% block title %}Szczegóły autora{% endblock %}
 
 {% block content %}
-<h1>{{ author.nick }}</h1>
-<h2>{{ author.email }}</h2>
-<p>{{ author.bio }}</p>
+<h1>Autor:</h1>
+<p>Nick: {{ author.nick }}</p>
+<p>Email: {{ author.email }}</p>
+<p>Bio: {{ author.bio }}</p>
 <p><a href="{% url 'blog:authors_list' %}">BACK</a></p>
-<h3>Posty autora</h3>
+<hr>
+<h2>Posty autora:</h3>
 <ul>
     {% for post in posts %}
     <li>

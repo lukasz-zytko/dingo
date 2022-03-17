@@ -3,9 +3,18 @@
 {% block title %}Posts list{% endblock %}
 
 {% block content %}
-   <ul>
-       {% for post in posts %}
+    <h1>Lista postów:</h1>
+    <ul>
+        {% for post in posts %}
             <li><a href="{% url 'blog:post_details' post.id %}">{{ post.title }}</a> | {{ post.content|truncatechars:20 }} | <a href="{% url 'blog:author_details' post.author_id %}">{{ post.author }}</a></li>
-       {% endfor %}
-   </ul>
+        {% endfor %}
+    </ul>
+
+    <h2>Dodaj post:</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ post_form.as_p }}
+        <input type="submit" value="Dodaj">
+    </form> 
+
 {% endblock %}

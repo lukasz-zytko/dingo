@@ -3,9 +3,18 @@
 {% block title %}Authors list{% endblock %}
 
 {% block content %}
-   <ul>
-       {% for author in authors %}
+    <h1>Lista autorów:</h1>
+    <ul>
+        {% for author in authors %}
             <li><a href="{% url 'blog:author_details' author.id %}">{{ author.nick }}</a> | {{ author.email }}</li>
-       {% endfor %}
-   </ul>
+        {% endfor %}
+    </ul>
+
+    <h2>Dodaj autora</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ author_form.as_p }}
+        <input type="submit" value="Dodaj">
+    </form>   
+
 {% endblock %}

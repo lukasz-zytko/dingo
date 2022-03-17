@@ -83,10 +83,7 @@ def results_list(request):
         if form.is_valid():
             if form.cleaned_data['error'] == '':
                 form.cleaned_data['error'] = None
-            Result.objects.get_or_create(
-                value = form.cleaned_data['value'],
-                error = form.cleaned_data['error']
-            )
+            Result.objects.get_or_create(**form.cleaned_data)
             messages.add_message(
                 request,
                 messages.SUCCESS,
