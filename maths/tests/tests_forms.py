@@ -14,3 +14,14 @@ class ResultFormTest(TestCase):
         self.assertEqual(r.value, 200)
         self.assertIsNotNone(r.id)
         self.assertIsNone(r.error)
+    
+    def test_result_save_correct_error(self):
+        data = {"error": "Error"}
+        self.assertEqual(len(Result.objects.all()), 0)
+        form = ResultForm(data=data)
+        self.assertTrue(form.is_valid())
+        r = form.save()
+        self.assertIsInstance(r, Result)
+        self.assertEqual(r.error, "Error")
+        self.assertIsNotNone(r.id)
+        self.assertIsNone(r.value)
