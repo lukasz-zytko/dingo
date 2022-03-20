@@ -1,5 +1,22 @@
 from django import forms
-from posts.models import Author
+from posts.models import Author, Post
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = "__all__"
+
+class AuthorForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields = "__all__"
+
+
+"""
+class AuthorForm(forms.Form):
+    nick = forms.CharField(max_length=25, help_text="* Maksymalnie 25 znaków.")
+    email = forms.EmailField(help_text="* ")
+    bio = forms.CharField(required=False)
 
 class PostForm(forms.Form):
     title = forms.CharField(max_length=65, help_text="* Maksymalnie 65 znaków.")
@@ -11,8 +28,4 @@ class PostForm(forms.Form):
         choices=((a.id, a.nick) for a in Author.objects.all()),
         help_text="* "
     )
-
-class AuthorForm(forms.Form):
-    nick = forms.CharField(max_length=25, help_text="* Maksymalnie 25 znaków.")
-    email = forms.EmailField(help_text="* ")
-    bio = forms.CharField(required=False)
+"""

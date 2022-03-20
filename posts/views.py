@@ -12,6 +12,28 @@ def home(request):
     )
 
 def posts_list(request):
+    posts = Post.objects.all()
+    post_form = PostForm()
+    if request.method == "POST":
+        post_form = PostForm(data=request.POST)
+        if post_form.is_valid():
+            post_form.save()
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                "Dodano nowy post!"
+            )
+    return render(
+        request=request,
+        template_name="posts/posts_list.html",
+        context={
+            "posts": posts,
+            "post_form": post_form
+        }
+    )
+
+"""
+def posts_list(request):
     if request.method == "POST":
         post_form = PostForm(data=request.POST)
         if post_form.is_valid:
@@ -35,6 +57,7 @@ def posts_list(request):
             "post_form": post_form
         }
     )
+"""
 
 def post_details(request,id):
     post = Post.objects.get(id=id)
@@ -45,22 +68,17 @@ def post_details(request,id):
     )
 
 def authors_list(request):
+    author_form = AuthorForm()
+    authors = Author.objects.all()
     if request.method == "POST":
         author_form = AuthorForm(data=request.POST)
-        bio_form = author_form.data["bio"] or None
         if author_form.is_valid:
-            Author.objects.create(
-                nick = author_form.data["nick"],
-                email = author_form.data["email"],
-                bio = bio_form
-            )
+            author_form.save()
             messages.add_message(
                 request,
                 messages.SUCCESS,
                 "Utworzono nowego autora!"
             )
-    author_form = AuthorForm()
-    authors = Author.objects.all()
     return render(
         request=request,
         template_name="posts/authors_list.html",

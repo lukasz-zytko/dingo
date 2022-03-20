@@ -77,13 +77,12 @@ def math_details(request, id):
     )
 
 def results_list(request):
+    form = ResultForm()
+    results = Result.objects.all()
     if request.method == "POST":
         form = ResultForm(data=request.POST)
-
         if form.is_valid():
-            if form.cleaned_data['error'] == '':
-                form.cleaned_data['error'] = None
-            Result.objects.get_or_create(**form.cleaned_data)
+            form.save()
             messages.add_message(
                 request,
                 messages.SUCCESS,
@@ -96,8 +95,6 @@ def results_list(request):
                 form.errors['__all__']
             )
 
-    form = ResultForm()
-    results = Result.objects.all()
     return render(
         request=request,
         template_name="maths/results.html",
