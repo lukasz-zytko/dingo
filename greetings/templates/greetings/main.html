@@ -3,19 +3,21 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <title>{% block title %} Kalkulator Django {% endblock %}</title>
+   <title>{% block title %} Dingo {% endblock %}</title>
    {% load static %}
-   <link rel="stylesheet" type="text/css" href="{% static 'maths/css/style.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'greetings/css/style.css' %}">
    {# Load CSS and JavaScript #}
    {% bootstrap_css %}
    {% bootstrap_javascript jquery='full' %}
 </head>
 <body>
-   <div id="content">
-      <div id="header">
-         <img src="{% static 'maths/img/kodilla-nav-logo.svg' %}">
-         <h1>Kalkulator Django</h1>
+   <nav class="navbar sticky-top navbar-light bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Sticky top</a>
+        <a class="navbar-brand" href="#">Sticky top</a>
       </div>
+    </nav>
+   <div id="content">
       {% bootstrap_messages %}
       <div id="inner_content">
          {% block content %}
