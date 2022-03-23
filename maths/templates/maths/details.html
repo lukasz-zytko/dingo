@@ -3,27 +3,38 @@
 {% block title %}Maths list{% endblock %}
 
 {% block content %}
-   <table style="border: 1px solid">
-       <tr>
-           <th>Operation</th>
-           <td>{{ math.operation }}</td>
-       </tr>
-       <tr>
-           <th>a</th>
-           <td>{{ math.a }}</td>
-       </tr>
-       <tr>
-           <th>b</th>
-           <td>{{ math.b }}</td>
-       </tr>
-       <tr>
-           <th>Created:</th>
-           <td>{{ math.created }}</td>
-       </tr>
-       <tr>
-           <th>Result</th>
-           <td>{{ math.result }}</td>
-       </tr>
-   </table>
-   <button><a href="{% url 'maths:list' %}">back</a></button>
+<div class="row">
+    <div class="col-4">
+        <h1>Wynik operacji</h1>
+    </div>
+    <div class="col">
+        <table class="table table-striped">
+            <tbody>  
+                <tr>
+                    <th scope="row">Operation</th>
+                    <td>{{ math.operation }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">a</th>
+                    <td>{{ math.a }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">b</th>
+                    <td>{{ math.b }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">result</th>
+                    <td>{{ math.result }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">created</th>
+                    <td>{{ math.created }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-success" href="{% url 'maths:list' %}">Back</a>
+    </div>
+</div>
+
+
 {% endblock %}
