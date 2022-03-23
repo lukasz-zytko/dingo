@@ -48,5 +48,5 @@ class Result(models.Model):
                 )
             ]
     def __str__(self):
-        return f"value: {self.value} | error: {self.error}"
+        return f"{self.value}"
 

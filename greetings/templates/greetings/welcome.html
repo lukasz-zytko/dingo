@@ -4,6 +4,14 @@
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-        <h1>Dingo App</h1>
-        <img src="{% static 'greetings/img/dingo.jpg' %}">
+<div class="row">
+        <div class="col">
+                <img src="{% static 'greetings/img/dingo.jpg' %}">
+        </div>
+        <div class="col">
+                <h1>Dingo App</h1>
+        </div>
+</div>
+        
+        
 {% endblock %}

@@ -4,13 +4,19 @@
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-    <h1>O mnie</h1>
-    <img id="about" src="{% static 'greetings/img/lukasz-zytko.jpg' %}" >
-    <ul>
-        <li>Nazywam się Łukasz Żytko i mieszkam w Warszawie</li>
-        <li>Zawodowo od 14 lat zajmuje się SEO</li>
-        <li>Aktualnie poszerzam swoje zainteresowania o Pythona</li>
-        <li>Prywatnie jestem mężem Joanny i ojcem oraz wielkim fanem 6-letniej Zośki</li>
-        <li>Jestem też fanem Hiszpani, kultury tego kraju ale przede wszystkim jedzednia i wina :) </li>
-    </ul>
+    <div class="row">
+        <div class="col">
+            <img id="about" src="{% static 'greetings/img/lukasz-zytko.jpg' %}" >
+        </div>
+        <div class="col">
+            <h1>O mnie</h1>
+            <ul>
+                <li>Nazywam się Łukasz Żytko i mieszkam w Warszawie</li>
+                <li>Zawodowo od 14 lat zajmuje się SEO</li>
+                <li>Aktualnie poszerzam swoje zainteresowania o Pythona</li>
+                <li>Prywatnie jestem mężem Joanny i ojcem oraz wielkim fanem 6-letniej Zośki</li>
+                <li>Jestem też fanem Hiszpani, kultury tego kraju ale przede wszystkim jedzednia i wina :) </li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}

@@ -11,12 +11,13 @@
    {% bootstrap_javascript jquery='full' %}
 </head>
 <body>
-   <nav class="navbar sticky-top navbar-light nav-fill" style="background-color: #e3f2fd;">
+   <nav class="navbar navbar-light mb-3" style="background-color: #e3f2fd;">
       <div class="container-fluid">
          <a class="navbar-brand" href="{% url 'welcome' %}"><img src="{% static 'greetings/img/logo.jpg' %}" width="30">Dingo</a>
          <a class="navbar-nav" href="{% url 'about' %}">About</a>
          <a class="navbar-nav" href="{% url 'maths:list' %}">Maths</a>
          <a class="navbar-nav" href="{% url 'blog:posts_list' %}">Posts</a>
+         <a class="navbar-nav" href="{% url 'blog:authors_list' %}">Authors</a>
          <a class="navbar-nav" href="{% url 'contact' %}">Contact</a>
       </div>
     </nav>

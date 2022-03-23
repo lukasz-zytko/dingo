@@ -2,6 +2,7 @@ from django.shortcuts import render
 from posts.models import Post, Author
 from posts.forms import AuthorForm, PostForm
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 
 def home(request):
@@ -13,6 +14,9 @@ def home(request):
 
 def posts_list(request):
     posts = Post.objects.all()
+    paginator = Paginator(posts, 4)
+    page_number = request.GET.get("page")
+    posts = paginator.get_page(page_number)
     post_form = PostForm()
     if request.method == "POST":
         post_form = PostForm(data=request.POST)

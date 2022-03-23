@@ -4,32 +4,40 @@
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-<h1>Skontaktuj się ze mną</h1>
-<ul>
-    <li>Imię i nazwisko: <strong>Łukasz Żytko</strong></li>
-    <li>Adres: <strong>ul. Czechowicka 26/28 Warszawa</strong></li>
-    <li>Email: <strong>lukasz@zytko.pl</strong></li>
-    <li>Git: <strong>https://github.com/lukasz-zytko/</strong></li>
-</ul>
-<h2>Skorzystaj z formularza</h2>
-<form>
-    <table>
-        <tr>
-            <td><label>Imię:</label></td>
-            <td><input type="text" placeholder="Podaj swoje imię" required></td>
-        </tr>
-        <tr>
-            <td><label>Twój email:</label></td>
-            <td><input type="email" placeholder="Podaj email" required></td>
-        </tr>
-        <tr>
-            <td><label>Wiadomość</label></td>
-            <td><textarea rows="10" cols="60" placeholder="Wpisz wiadomość" required></textarea></td>
-        </tr>
-        <tr>
-            <td><label></label></td>
-            <td><button type="submit">Wyślij</button>&nbsp;<button type="reset">Wyczyść</button></td>
-        </tr>      
-    </table>
-</form>
+<div class="row">
+    <div class="col">
+        <h1>Kontakt</h1>
+        <ul>
+            <li>Imię i nazwisko: <strong>Łukasz Żytko</strong></li>
+            <li>Adres: <strong>ul. Czechowicka 26/28 Warszawa</strong></li>
+            <li>Email: <strong>lukasz@zytko.pl</strong></li>
+            <li>Git: <strong>https://github.com/lukasz-zytko/</strong></li>
+        </ul>
+    </div>
+    <div class="col">
+        <form>
+            <table>
+                <tr>
+                    <td><label>Imię:</label></td>
+                    <td><input type="text" placeholder="Podaj swoje imię" required></td>
+                </tr>
+                <tr>
+                    <td><label>Twój email:</label></td>
+                    <td><input type="email" placeholder="Podaj email" required></td>
+                </tr>
+                <tr>
+                    <td><label>Wiadomość</label></td>
+                    <td><textarea rows="10" cols="60" placeholder="Wpisz wiadomość" required></textarea></td>
+                </tr>
+                <tr>
+                    <td><label></label></td>
+                    <td><button type="submit">Wyślij</button>&nbsp;<button type="reset">Wyczyść</button></td>
+                </tr>      
+            </table>
+        </form>
+    </div>
+</div>
+
+
+
 {% endblock %}

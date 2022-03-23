@@ -76,13 +76,21 @@ def div(request, a, b):
 
 def maths_list(request):
     maths = Math.objects.all()
+    op_form = OperationForm()
+    if request.method == "POST":
+        op_form = OperationForm(data=request.POST)
+        if op_form.is_valid:
+            maths = Math.objects.filter(operation=op_form.data["operation"])
     paginator = Paginator(maths, 5)
     page_number = request.GET.get("page")
     maths = paginator.get_page(page_number)
     return render(
         request=request,
         template_name="maths/list.html",
-        context={"maths": maths}
+        context={
+            "maths": maths,
+            "form": op_form
+        }
     )
 
 def math_details(request, id):

@@ -1,10 +1,33 @@
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
    <title>{% block title %} Blog {% endblock %}</title>
+   {% load static %}
+   <link rel="stylesheet" type="text/css" href="{% static 'maths/css/style.css' %}">
+   {# Load CSS and JavaScript #}
+   {% bootstrap_css %}
+   {% bootstrap_javascript jquery='full' %}
 </head>
 <body>
+   <nav class="navbar sticky-top navbar-dark bg-dark mb-3">
+      <div class="container-fluid">
+         <span class="navbar-text navbar-lg">
+            <h2>Dingo</h2>
+            <p>my first Django Apps</p>
+         </span>
+         <div class="inline">
+            <a class="navbar-text" href="{% url 'welcome' %}">Home</a>
+            <a class="navbar-text" href="{% url 'maths:list' %}">Maths</a>
+            <a class="navbar-text" href="{% url 'blog:posts_list' %}">Posts</a>
+            <a class="navbar-text" href="{% url 'blog:authors_list' %}">Authors</a>
+            <a class="navbar-text" href="{% url 'about' %}">About</a>
+            <a class="navbar-text" href="{% url 'contact' %}">Contact</a>
+         </div>
+      </div>
+   </nav>
+
    {% if messages %}
       <ul class="messages">
          {% for message in messages %}
@@ -12,8 +35,11 @@
          {% endfor %}
       </ul>
    {% endif %}
-<p><a href="{% url 'blog:posts_list' %}">Lista postów</a> | <a href="{% url 'blog:authors_list' %}">Lista autorów</a></p>
+   
+<div class="container">
 {% block content %}
 {% endblock %}
+</div>
+
 </body>
 </html>

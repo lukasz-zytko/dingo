@@ -3,18 +3,37 @@
 {% block title %}Authors list{% endblock %}
 
 {% block content %}
-    <h1>Lista autorów:</h1>
-    <ul>
-        {% for author in authors %}
-            <li><a href="{% url 'blog:author_details' author.id %}">{{ author.nick }}</a> | {{ author.email }}</li>
-        {% endfor %}
-    </ul>
-
-    <h2>Dodaj autora</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ author_form.as_p }}
-        <input type="submit" value="Dodaj">
-    </form>   
-
+<div class="row">
+    <div class="col-8">
+        <h1>Lista autorów:</h1>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">nick</th>
+                <th scope="col">bio</th>
+                <th scope="col">emial</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for a in authors %}  
+                    <tr>
+                        <th scope="row">{{ a.id }}</th>
+                        <td><a href="{% url 'blog:author_details' a.id %}">{{ a.nick }}</a></td>
+                        <td>{{ a.bio|truncatechars:30 }}</td>
+                        <td>{{ a.email }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col">
+        <h2>Dodaj autora</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ author_form.as_p }}
+                <input type="submit" value="Dodaj">
+            </form>
+    </div>  
+</div>
 {% endblock %}

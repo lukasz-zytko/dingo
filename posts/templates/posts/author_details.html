@@ -3,21 +3,32 @@
 {% block title %}Szczegóły autora{% endblock %}
 
 {% block content %}
-<h1>Autor:</h1>
-<p>Nick: {{ author.nick }}</p>
-<p>Email: {{ author.email }}</p>
-<p>Bio: {{ author.bio }}</p>
-<p><a href="{% url 'blog:authors_list' %}">BACK</a></p>
-<hr>
-<h2>Posty autora:</h3>
-<ul>
-    {% for post in posts %}
-    <li>
-        <h4> {{ post.title }} </h4>
-        <p> {{ post.content }}</p>
-    </li>
-    {% endfor %}
-</ul>
+<div class="row">
+    <div class="col-5">
+        <h1>{{ author.nick }}</h1>
+        <p><strong>Email: {{ author.email }}</strong></p>
+        <p><strong>Bio: </strong>{{ author.bio }}</p>
+        <a class="btn btn-success" href="{% url 'blog:authors_list' %}">Wróć do listy autorów</a>
+    </div>
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">tytuł</th>
+                <th scope="col">content</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for p in posts %}  
+                    <tr>
+                        <td><a href="{% url 'blog:post_details' p.id %}">{{ p.title }}</a></td>
+                        <td>{{ p.content|truncatechars:100 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 
 {% endblock %}
 

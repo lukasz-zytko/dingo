@@ -3,18 +3,52 @@
 {% block title %}Posts list{% endblock %}
 
 {% block content %}
-    <h1>Lista postów:</h1>
-    <ul>
-        {% for post in posts %}
-            <li><a href="{% url 'blog:post_details' post.id %}">{{ post.title }}</a> | {{ post.content|truncatechars:20 }} | <a href="{% url 'blog:author_details' post.author_id %}">{{ post.author }}</a></li>
-        {% endfor %}
-    </ul>
+<div class="row">
+    <div class="col-7">
+        <h1>Lista postów</h1>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">tytuł</th>
+                <th scope="col">content</th>
+                <th scope="col">autor</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for p in posts %}  
+                    <tr>
+                        <th scope="row">{{ p.id }}</th>
+                        <td><a href="{% url 'blog:post_details' p.id %}">{{ p.title }}</a></td>
+                        <td>{{ p.content|truncatechars:50 }}</td>
+                        <td><a href="{% url 'blog:author_details' p.author_id %}">{{ p.author }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center">
+            <div class="btn-group" role="group">
+                    {% if posts.has_previous %}
+                        <a class="btn btn-outline-dark btn-sm" href="?page=1"><< first</a>
+                        <a class="btn btn-outline-dark btn-sm" href="?page={{ posts.previous_page_number }}">previous</a>
+                    {% endif %}
+                    
+                        <button class="btn btn-dark btn-sm">Page {{ posts.number }} of {{ posts.paginator.num_pages }}</button>
 
-    <h2>Dodaj post:</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ post_form.as_p }}
-        <input type="submit" value="Dodaj">
-    </form> 
-
+                    {% if posts.has_next %}
+                        <a class="btn btn-outline-dark btn-sm" href="?page={{ posts.next_page_number }}">next</a>
+                        <a class="btn btn-outline-dark btn-sm" href="?page={{ posts.paginator.num_pages }}">last >></a>
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <h2><span class="align-middle">Dodaj post</span></h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ post_form.as_p }}
+            <input type="submit" value="Dodaj">
+        </form> 
+    </div>
+</div>
 {% endblock %}

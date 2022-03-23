@@ -20,6 +20,8 @@ class Post(models.Model):
     )
     def __str__(self):
         return f"Title: {self.title} | Content: {self.content} | Author-id: {self.author_id}"
+    class Meta:
+        ordering = ["-modified"]
 
 class Author(models.Model):
     nick = models.CharField(max_length=25, unique=True)
