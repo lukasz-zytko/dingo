@@ -12,6 +12,19 @@ def welcome(request):
     return render(
         request=request,
         template_name="greetings/welcome.html",
-        context={"name": "Welcome"}
-        
+        context={} 
     )
+
+def about(request):
+    return render(
+        request=request,
+        template_name="greetings/about.html",
+        context={} 
+    )
+
+def contact(request):
+    return render(
+        request=request,
+        template_name="greetings/contact.html",
+        context={} 
+    )   
