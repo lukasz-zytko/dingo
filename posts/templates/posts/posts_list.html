@@ -1,4 +1,5 @@
-{% extends "posts/main.html" %}
+{% extends "main.html" %}
+{% load bootstrap4 %}
 
 {% block title %}Posts list{% endblock %}
 
@@ -43,12 +44,14 @@
         </div>
     </div>
     <div class="col">
+        {% if perms.posts.add_post %}
         <h2><span class="align-middle">Dodaj post</span></h2>
-        <form method="post">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ post_form.as_p }}
+            {% bootstrap_form post_form %}
             <input type="submit" value="Dodaj">
         </form> 
+        {% endif %}
     </div>
 </div>
 {% endblock %}

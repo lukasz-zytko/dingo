@@ -1,4 +1,5 @@
-{% extends "posts/main.html" %}
+{% extends "main.html" %}
+{% load bootstrap4 %}
 
 {% block title %}Authors list{% endblock %}
 
@@ -28,12 +29,14 @@
         </table>
     </div>
     <div class="col">
+        {% if perms.posts.add_post %}
         <h2>Dodaj autora</h2>
             <form method="post">
                 {% csrf_token %}
-                {{ author_form.as_p }}
+                {% bootstrap_form author_form %}
                 <input type="submit" value="Dodaj">
             </form>
+        {% endif %}
     </div>  
 </div>
 {% endblock %}

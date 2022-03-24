@@ -14,7 +14,7 @@ def home(request):
 
 def posts_list(request):
     posts = Post.objects.all()
-    paginator = Paginator(posts, 4)
+    paginator = Paginator(posts, 5)
     page_number = request.GET.get("page")
     posts = paginator.get_page(page_number)
     post_form = PostForm()

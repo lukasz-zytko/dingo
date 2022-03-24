@@ -4,6 +4,7 @@ from django.contrib import messages
 from maths.models import Math, Result
 from maths.forms import ResultForm, OperationForm
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 def maths(request):
     maths = None
@@ -74,6 +75,7 @@ def div(request, a, b):
         context=c
     )   
 
+@login_required
 def maths_list(request):
     maths = Math.objects.all()
     op_form = OperationForm()
