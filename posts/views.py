@@ -65,10 +65,14 @@ def posts_list(request):
 
 def post_details(request,id):
     post = Post.objects.get(id=id)
+    tags = post.tags.all()
     return render(
         request=request,
         template_name="posts/post_details.html",
-        context={"post":post}
+        context={
+            "post":post,
+            "tags": tags
+        }
     )
 
 def authors_list(request):

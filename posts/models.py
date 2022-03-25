@@ -24,6 +24,7 @@ class Post(models.Model):
         null=True,
         default=None
     )
+    tags = models.ManyToManyField("posts.Tag", related_name="posts")
 
     def __str__(self):
         return f"Title: {self.title} | Content: {self.content} | Author-id: {self.author_id}"
@@ -37,5 +38,13 @@ class Author(models.Model):
         null=True
     )
     email = models.EmailField()
+
     def __str__(self):
         return f"{self.nick}"
+
+class Tag(models.Model):
+    word = models.CharField(max_length=50, unique=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.word}"
