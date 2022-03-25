@@ -19,7 +19,7 @@ def posts_list(request):
     posts = paginator.get_page(page_number)
     post_form = PostForm()
     if request.method == "POST":
-        post_form = PostForm(data=request.POST)
+        post_form = PostForm(data=request.POST, files=request.FILES)
         if post_form.is_valid():
             post_form.save()
             messages.add_message(

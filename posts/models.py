@@ -18,6 +18,13 @@ class Post(models.Model):
         blank=True,
         null=True        
     )
+    image = models.ImageField(
+        upload_to="photos/%Y/%m/%d",
+        blank=True,
+        null=True,
+        default=None
+    )
+
     def __str__(self):
         return f"Title: {self.title} | Content: {self.content} | Author-id: {self.author_id}"
     class Meta:
