@@ -1,4 +1,5 @@
 {% extends "main.html" %}
+{% load bootstrap4 %}
 
 {% block title %}Szczegóły wpisu{% endblock %}
 
@@ -19,6 +20,23 @@
         <p><strong>Autor:</strong> <a href="{% url 'blog:author_details' post.author_id %}">{{ post.author }}</a></p>
         <p class="float-right"><a class="btn btn-success" href="{% url 'blog:posts_list' %}">Wróć do listy postów</a></p>
     </div>
+</div>
+<div class="row">
+    {{ data }}
+</div>
+<div class="row mb-5">
+    {% if perms.posts.add_post %}
+        <div class="col-2">
+            <h2><span class="align-middle">Edycja</span></h2>
+        </div>
+        <div class="col">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <input type="submit" value="Zmień">
+            </form>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}
 
