@@ -66,18 +66,12 @@ def posts_list(request):
 def post_details(request,id):
     post = Post.objects.get(id=id)
     tags = post.tags.all()
-    form = PostForm(instance=post)
-    data = []
-    if request.method == "POST":
-        data = request.POST
     return render(
         request=request,
         template_name="posts/post_details.html",
         context={
-            "post":post,
+            "post": post,
             "tags": tags,
-            "form": form,
-            "data": data
         }
     )
 

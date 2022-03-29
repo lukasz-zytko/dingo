@@ -1,3 +1,4 @@
+from tkinter.tix import Tree
 from django.db import models
 
 class Post(models.Model):
@@ -24,7 +25,7 @@ class Post(models.Model):
         null=True,
         default=None
     )
-    tags = models.ManyToManyField("posts.Tag", related_name="posts")
+    tags = models.ManyToManyField("posts.Tag", related_name="posts", blank=True)
 
     def __str__(self):
         return f"Title: {self.title} | Content: {self.content} | Author-id: {self.author_id}"
@@ -43,7 +44,10 @@ class Author(models.Model):
         return f"{self.nick}"
 
 class Tag(models.Model):
-    word = models.CharField(max_length=50, unique=True)
+    word = models.CharField(
+        max_length=50,
+        unique=True
+    )
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
