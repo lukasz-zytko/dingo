@@ -11,5 +11,5 @@ urlpatterns = [
    path('div/<int:a>/<b>', div),
    path("histories/", maths_list, name="list"),
    path("histories/<int:id>", math_details, name="details"),
-   path("results/", results_list, name="results")
+   path("results/", results_list, name="results"),
 ]

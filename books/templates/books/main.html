@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <title>{% block title %} Kalkulator Django {% endblock %}</title>
+   <title>{% block title %} Library {% endblock %}</title>
    {% load static %}
    <link rel="stylesheet" type="text/css" href="{% static 'maths/css/style.css' %}">
    {# Load CSS and JavaScript #}
@@ -14,17 +14,12 @@
    <nav class="navbar sticky-top navbar-dark bg-dark mb-3">
       <div class="container-fluid">
          <span class="navbar-text navbar-lg">
-            <h2>Dingo</h2>
-            <p>my first Django Apps</p>
+            <h2>Library</h2>
+            <p>borrow Your Favourite Book</p>
          </span>
          <div class="inline">
-            <a class="navbar-text" href="{% url 'welcome' %}">Home</a>
-            <a class="navbar-text" href="{% url 'maths:list' %}">Maths</a>
-            <a class="navbar-text" href="{% url 'blog:posts_list' %}">Posts</a>
-            <a class="navbar-text" href="{% url 'blog:authors_list' %}">Authors</a>
-            <a class="navbar-text" href="{% url 'books:home' %}">Books</a>
-            <a class="navbar-text" href="{% url 'about' %}">About</a>
-            <a class="navbar-text" href="{% url 'contact' %}">Contact</a>
+            <a class="navbar-text" href="{% url 'books:home' %}">Home</a>
+            <a class="navbar-text" href="{% url 'welcome' %}">APP</a>
             {% if user.is_authenticated %}
                <p class="navbar-text">
                   || {{ user.username }} | <a href="{% url 'logout' %}?next={{ request.get_full_path }}">logout</a>

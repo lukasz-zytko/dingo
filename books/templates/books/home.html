@@ -1,0 +1,14 @@
+{% extends "books/main.html" %}
+{% load bootstrap4 %}
+
+{% block title %}Library: Home{% endblock %}
+
+{% block content %}
+<div class="row">
+    <ul>
+    {% for b in books %}
+    <li>{{ b }}</li>
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}
