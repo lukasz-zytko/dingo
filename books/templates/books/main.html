@@ -11,7 +11,7 @@
    {% bootstrap_javascript jquery='full' %}
 </head>
 <body>
-   <nav class="navbar sticky-top navbar-dark bg-dark mb-3">
+   <nav class="navbar sticky-top navbar-dark mb-3" style="background-color: #023d64;">
       <div class="container-fluid">
          <span class="navbar-text navbar-lg">
             <h2>Library</h2>
@@ -19,10 +19,12 @@
          </span>
          <div class="inline">
             <a class="navbar-text" href="{% url 'books:home' %}">Home</a>
+            <a class="navbar-text" href="{% url 'books:books_list' %}">Books</a>
+            <a class="navbar-text" href="{% url 'books:authors_list' %}">Authors</a>
             <a class="navbar-text" href="{% url 'welcome' %}">APP</a>
             {% if user.is_authenticated %}
                <p class="navbar-text">
-                  || {{ user.username }} | <a href="{% url 'logout' %}?next={{ request.get_full_path }}">logout</a>
+                  || <a href="/admin">PA</a> | {{ user.username }} | <a href="{% url 'logout' %}?next={{ request.get_full_path }}">logout</a>
                </p>
             {% else %}
                <p class="navbar-text">|| <a class="navbar-text" href="{% url 'login' %}?next={{ request.get_full_path }}">login</a></p>
